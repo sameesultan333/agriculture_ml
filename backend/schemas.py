@@ -26,5 +26,12 @@ class TradeResponse(BaseModel):
 class MarketRateCreate(BaseModel):
     date: str
     vegetable: str
+    packing: str = "N/A"  # Add this line - make it optional with default
     min_price: float
     max_price: float
+
+class MarketRateResponse(MarketRateCreate):
+    id: int
+    
+    class Config:
+        from_attributes = True
