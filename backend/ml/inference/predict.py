@@ -58,3 +58,24 @@ def predict_price(vegetable: str, target_date: str):
     forecast = model.predict(future)
 
     return float(forecast["yhat"].iloc[0])
+def build_intelligence(predicted, lower, upper, mumbai_price):
+    diff = predicted - mumbai_price
+
+    # trend
+    trend = "UP 📈" if diff > 0 else "DOWN 📉"
+
+    # decision
+    decision = "BUY ✅" if diff > 0 else "WAIT ⚠️"
+
+    # risk (width of band)
+    risk = upper - lower
+
+    # anomaly (too far)
+    anomaly = abs(diff) > (predicted * 0.25)
+
+    return {
+        "trend": trend,
+        "decision": decision,
+        "risk": risk,
+        "anomaly": anomaly
+    }

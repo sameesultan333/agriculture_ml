@@ -1,12 +1,10 @@
-# ml/training/auto_train.py
-
 import os
 import pandas as pd
 import joblib
 from prophet import Prophet
 from db import get_connection
 
-MODEL_PATH = "ml/models/prophet_model.pkl"
+MODEL_DIR = "ml/models"
 
 
 def train_model():
@@ -25,62 +23,48 @@ def train_model():
 
         conn.close()
 
-        # =====================================================
-        # BASIC CHECKS
-        # =====================================================
         if df.empty:
             print("❌ No market data available")
             return
 
         print(f"📊 Total rows: {len(df)}")
 
-        # =====================================================
-        # CREATE TARGET
-        # =====================================================
+        # average
         df["y"] = (df["min_price"] + df["max_price"]) / 2
-
-        # =====================================================
-        # DATE CONVERSION
-        # =====================================================
         df["ds"] = pd.to_datetime(df["date"], errors="coerce")
 
-        # remove bad dates
         df = df.dropna(subset=["ds", "y"])
 
         if df.empty:
-            print("❌ All rows invalid after cleaning")
+            print("❌ No valid rows after cleaning")
             return
 
-        unique_dates = df["ds"].nunique()
-        print(f"📅 Unique days available: {unique_dates}")
+        vegetables = df["vegetable"].unique()
 
-        # =====================================================
-        # MINIMUM HISTORY PROTECTION
-        # =====================================================
-        if unique_dates < 2:
-            print("❌ Need at least 2 different days to train")
-            print("⏳ Waiting for tomorrow's data...")
-            return
+        print(f"🥕 Vegetables to train: {len(vegetables)}")
 
-        # =====================================================
-        # FINAL DATA
-        # =====================================================
-        df = df[["ds", "y"]]
+        os.makedirs(MODEL_DIR, exist_ok=True)
 
-        print("🧠 Training Prophet model...")
+        for veg in vegetables:
+            veg_df = df[df["vegetable"] == veg][["ds", "y"]]
 
-        model = Prophet()
-        model.fit(df)
+            unique_days = veg_df["ds"].nunique()
 
-        # =====================================================
-        # ENSURE MODEL FOLDER EXISTS
-        # =====================================================
-        os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+            if unique_days < 2:
+                print(f"⚠️ Skipping {veg} → not enough history")
+                continue
 
-        joblib.dump(model, MODEL_PATH)
+            print(f"🧠 Training {veg}...")
 
-        print("✅ Model trained successfully!")
-        print("💾 Saved at:", MODEL_PATH)
+            model = Prophet()
+            model.fit(veg_df)
+
+            path = f"{MODEL_DIR}/{veg}.pkl"
+            joblib.dump(model, path)
+
+            print(f"✅ Saved → {veg}.pkl")
+
+        print("\n🏁 Training complete.")
 
     except Exception as e:
         print("⚠️ Auto training failed:", str(e))
