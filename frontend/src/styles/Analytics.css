@@ -1,0 +1,25 @@
+.analytics {
+  padding: 20px;
+}
+
+.analytics h1 {
+  margin-bottom: 20px;
+}
+
+.analytics table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.analytics th,
+.analytics td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.analytics th {
+  background-color: #2e7d32;
+  color: white;
+}

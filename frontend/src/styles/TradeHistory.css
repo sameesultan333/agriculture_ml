@@ -1,0 +1,131 @@
+.trade-history {
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.controls input,
+.controls select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #111827;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.veg {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.profit.positive {
+  color: green;
+  font-weight: bold;
+}
+
+.profit.negative {
+  color: red;
+  font-weight: bold;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.status.arrived {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.transit {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* 🚨 Loss highlight */
+.row-loss {
+  background-color: #ffe5e5;
+}
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.controls input,
+.controls select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.arrival-input {
+  display: flex;
+  gap: 6px;
+}
+
+.arrival-input input {
+  width: 80px;
+  padding: 5px;
+}
+
+.arrival-input button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.row-loss {
+  background: #ffe6e6;
+}
+
+.profit.positive {
+  color: green;
+  font-weight: bold;
+}
+
+.profit.negative {
+  color: red;
+  font-weight: bold;
+}
+
+.status.arrived {
+  color: green;
+  font-weight: bold;
+}
+
+.status.transit {
+  color: orange;
+  font-weight: bold;
+}
+
+.risk {
+  font-weight: bold;
+}

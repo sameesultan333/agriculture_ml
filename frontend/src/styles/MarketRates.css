@@ -1,0 +1,106 @@
+.market-page {
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.market-page h1 {
+  margin-bottom: 25px;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section h3 {
+  margin-bottom: 15px;
+}
+
+.section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.market-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.market-form input {
+  padding: 8px;
+  min-width: 150px;
+}
+
+.market-form button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.market-form button:hover {
+  background: #1b5e20;
+}
+
+.ocr-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ocr-controls button {
+  background: #1565c0;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.ocr-controls button:disabled {
+  background: gray;
+}
+
+.save-all {
+  margin-top: 15px;
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.load-btn {
+  margin-bottom: 10px;
+  background: #37474f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.market-table th {
+  background: #0f172a;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.market-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}

@@ -1,0 +1,42 @@
+.create-trade {
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.predict-btn {
+  background: #6c5ce7;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.save-btn {
+  background: #00b894;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.prediction-box {
+  background: #f1f2f6;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.advice {
+  margin-top: 10px;
+}
