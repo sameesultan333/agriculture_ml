@@ -1,6 +1,5 @@
 .dashboard {
   padding: 30px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .dashboard-title {
@@ -8,30 +7,53 @@
 }
 
 .card-container {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .card {
   background: white;
+  border-radius: 12px;
   padding: 20px;
-  min-width: 150px;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
-}
-
-.card h3 {
-  margin: 0;
-  color: #555;
-  font-size: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
 .card-value {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .highlight {
   color: green;
+}
+
+/* AI PANEL */
+
+.ai-panel {
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.ai-item {
+  background: rgba(255,255,255,0.08);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.ai-item span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
 }

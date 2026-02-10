@@ -1,28 +1,28 @@
 # services/prediction_service.py
 
-from ml.inference.predict import predict_price, load_model, build_intelligence
+from ml.inference.predict import build_intelligence, predict_for_date
+
 from datetime import datetime
 import pandas as pd
 
+def get_prediction(vegetable: str, arrival_date: str, mumbai_price: float, qty: int):
 
-def get_prediction(vegetable: str, arrival_date: str, mumbai_price: float):
+    result = predict_for_date(vegetable, arrival_date)
 
-    model = load_model(vegetable)
+    if not result:
+        return {"error": "Model not ready"}
 
-    if not model:
-        return {"error": "Model not available for this vegetable"}
+    predicted = result["predicted"]
+    lower = result["lower"]
+    upper = result["upper"]
 
-    future = pd.DataFrame({
-        "ds": pd.to_datetime([arrival_date])
-    })
-
-    forecast = model.predict(future)
-
-    predicted = float(forecast["yhat"].iloc[0])
-    lower = float(forecast["yhat_lower"].iloc[0])
-    upper = float(forecast["yhat_upper"].iloc[0])
-
-    intelligence = build_intelligence(predicted, lower, upper, mumbai_price)
+    intelligence = build_intelligence(
+        predicted,
+        lower,
+        upper,
+        mumbai_price,
+        qty
+    )
 
     return {
         "vegetable": vegetable,

@@ -6,6 +6,7 @@ from routes.market_routes import router as market_router
 from routes.prediction_routes import router as prediction_router
 from routes.ml_routes import router as ml_router
 from routes.ocr_routes import router as ocr_router
+from routes.chart_routes import router as chart_router
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Agri Price Intelligence")
 
@@ -37,3 +38,4 @@ app.include_router(trade_router)
 app.include_router(prediction_router)
 app.include_router(ml_router)
 app.include_router(ocr_router)
+app.include_router(chart_router)
